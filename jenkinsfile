@@ -1,20 +1,15 @@
 pipeline {
   agent any
   stages {
-    stage('build') {
+    stage('Version') {
       steps {
-        bat 'pip install -r requirements.txt'
+        sh 'python3 --version'
       }
     }
     stage('test') {
       steps {
-        bat 'python test.py'
+        sh 'python3 test.py'
       }
-      post {
-        always {
-          junit 'test-reports/*.xml'
-        }
-      }    
-    }
+   }    
   }
 }
